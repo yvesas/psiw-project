@@ -1,0 +1,39 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Psiw {
+  id                String  @id @default(uuid())
+  psiwType          String
+  senderName        String
+  senderWhatsapp    String
+  recipientName     String
+  recipientWhatsapp String
+  viewedFile        String?
+  reactedFile       String?
+  compiledFile      String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  React     React[]
+}
+
+model React {
+  id           String  @id @default(uuid())
+  psiwId       String
+  reactedFile  String?
+  compiledFile String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  psiw Psiw @relation(fields: [psiwId], references: [id])
+}

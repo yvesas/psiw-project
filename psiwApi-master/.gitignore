@@ -1,0 +1,9 @@
+node_modules
+# Keep environment variables out of version control
+dist
+public/uploads/compiledFiles/*
+public/uploads/reactedFiles/*
+public/uploads/viewedFiles/*
+!public/uploads/compiledFiles/.gitkeep
+!public/uploads/reactedFiles/.gitkeep
+!public/uploads/viewedFiles/.gitkeep
